@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.0.1/js/bootstrap.js"></script>
+
+</head>
+<body>
+<!--头部菜单-->
+<div class="row clearfix" th:fragment="menu">
+    <div class="col-md-12 column">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">简介</a>
+            </li>
+            <li class="disabled">
+                <a href="#">信息</a>
+            </li>
+            <li class="dropdown pull-right">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">操作</a>
+                    </li>
+                    <li>
+                        <a href="#">设置栏目</a>
+                    </li>
+                    <li>
+                        <a href="#">更多设置</a>
+                    </li>
+                    <li class="divider">
+                    </li>
+                    <li>
+                        <a href="#">分割线</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--左侧导航-->
+<div class="col-md-1 column" th:fragment="navigation">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active">
+            <a href="#">首页</a>
+        </li>
+        <li>
+            <a href="#">简介</a>
+        </li>
+        <li class="disabled">
+            <a href="#">信息</a>
+        </li>
+        <li class="dropdown pull-right">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">操作</a>
+                </li>
+                <li>
+                    <a href="#">设置栏目</a>
+                </li>
+                <li>
+                    <a href="#">更多设置</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                    <a href="#">分割线</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--右侧标签-->
+<div class="col-md-3 column" th:fragment="tags">
+    <span class="label label-default">标签</span> <span class="label label-default">标签</span>
+</div>
+</body>
+</html>

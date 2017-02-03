@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<div th:replace="header :: head"></div>
+<body>
+<div class="container">
+    <div th:replace="header :: menu"></div>
+    <div class="row clearfix">
+        <div th:replace="header :: navigation"></div>
+        <div class="col-md-8 column">
+            <div class="jumbotron">
+                <h1>
+                    Hello, world!
+                </h1>
+                <p>
+                    This is a template for a simple marketing or informational website. It includes a large callout
+                    called the hero unit and three supporting pieces of content. Use it as a starting point to create
+                    something more unique.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                </p>
+            </div>
+            <div th:if="${not #lists.isEmpty(news)}">
+                <div th:each="news:${news}">
+                    <h2 th:text=" ${news.title}"></h2>
+                    <p th:text=" ${news.url}"></p>
+                    <p>
+                        <a class="btn" href="${news.url}">查看详情 »</a>
+                    </p>
+                </div>
+            </div>
+
+            <ul class="pagination">
+                <li>
+                    <a href="#">Prev</a>
+                </li>
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">Next</a>
+                </li>
+            </ul>
+        </div>
+        <div th:replace="header :: tags"></div>
+    </div>
+</div>
+
+</body>
+</html>
