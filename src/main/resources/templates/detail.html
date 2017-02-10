@@ -1,1 +1,63 @@
-#parse("header.html")
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<div th:replace="header :: head"></div>
+<body>
+<div class="container">
+    <div th:replace="header :: menu2"></div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1 class="text-center" th:text=" ${news.title}">
+            </h1>
+            <div class="row clearfix">
+                <div class="col-md-4 column">
+                    <h4 class="text-info text-center" th:text=" ${news.depart}">
+                    </h4>
+                </div>
+                <div class="col-md-4 column">
+                    <h4 class="text-info text-center" th:text=" ${news.channel}">
+                    </h4>
+                </div>
+                <div class="col-md-4 column">
+                    <h4 class="text-info text-center" th:text=" ${news.newsdate}">
+                    </h4>
+                </div>
+            </div>
+            <p class="text-left lead" th:text=" ${news.content}">
+            </p>
+            <blockquote>
+                <a th:href="@{${news.url}}" target="_blank">原文链接</a>
+            </blockquote>
+        </div>
+        <!--评论框-->
+        <div class="col-md-12 column">
+            <form role="form" action="/addComment" id="commentform" method="post">
+                <input type="hidden" name="newsId" th:value="${news.id}"/>
+                <div class="form-group">
+                    <label for="commentText">评论内容</label>
+                    <textarea id="commentText" name="content" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">发表</button>
+            </form>
+        </div>
+        <!--评论内容-->
+        <div th:if="${not #lists.isEmpty(comments)}">
+            <div class="col-md-12 column">
+                <h2>已发表评论</h2>
+            </div>
+            <div class="col-md-12 column">
+                <div th:each="comment:${comments}">
+                    <div class="page-header"></div>
+                    <div class="media">
+                        <a href="#" class="pull-left"><img src="" th:attr="src=@{${comment.get('user').headUrl}}" class="media-object" alt=''/></a>
+                        <div class="media-body">
+                            <h4 class="media-heading" th:text=" ${comment.get('user').name}"></h4>
+                            <p class="text-left lead" th:text=" ${comment.get('comment').content}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

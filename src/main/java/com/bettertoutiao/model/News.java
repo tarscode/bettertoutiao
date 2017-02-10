@@ -15,6 +15,7 @@ public class News {
     private String content;
     private String url;
     private Date createtime;
+    private Double score;
 
     public int getId() {
         return id;
@@ -86,5 +87,13 @@ public class News {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 }

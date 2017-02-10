@@ -3,60 +3,40 @@
 <div th:replace="header :: head"></div>
 <body>
 <div class="container">
-    <div th:replace="header :: menu"></div>
+
     <div class="row clearfix">
-        <div th:replace="header :: navigation"></div>
+        <div class="col-md-12 column">
+            <div th:replace="header :: menu2"></div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div th:replace="header :: sidebar"></div>
         <div class="col-md-8 column">
-            <div class="jumbotron">
-                <h1>
-                    Hello, world!
-                </h1>
-                <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout
-                    called the hero unit and three supporting pieces of content. Use it as a starting point to create
-                    something more unique.
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
-                </p>
-            </div>
             <div th:if="${not #lists.isEmpty(news)}">
                 <div th:each="news:${news}">
                     <h2 th:text=" ${news.title}"></h2>
-                    <p th:text=" ${news.url}"></p>
                     <p>
-                        <a class="btn" href="${news.url}">查看详情 »</a>
+                        <a class="btn" href="detail.html" th:href="@{/news/{nid}(nid=${news.id})}">查看详情 »</a>
                     </p>
+                    <div class="page-header"></div>
                 </div>
             </div>
-
+            <!--分页-->
             <ul class="pagination">
                 <li>
-                    <a href="#">Prev</a>
+                    <a href="home.html" th:href="@{/depart(id=${departId},page=${pre})}">上一页</a>
                 </li>
                 <li>
-                    <a href="#">1</a>
+                    <span th:text="${cur}"></span>
                 </li>
                 <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">Next</a>
+                    <a href="home.html" th:href="@{/depart(id=${departId},page=${next})}">下一页</a>
                 </li>
             </ul>
         </div>
-        <div th:replace="header :: tags"></div>
     </div>
-</div>
 
+</div>
 </body>
 </html>
