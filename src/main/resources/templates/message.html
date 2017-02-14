@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<div th:replace="header :: head"></div>
+<body>
+<div class="container">
+    <div th:replace="header :: menu2"></div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="tabbable" id="tabs-619251">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="#systemMessage" data-toggle="tab">系统通知</a>
+                    </li>
+                    <li class="active">
+                        <a href="#userMessage" data-toggle="tab">朋友私信</a>
+                    </li>
+                    <li class="nav navbar-nav navbar-right">
+                        <button type="button" class="btn btn-default btn-success" data-toggle="modal"
+                                data-target="#messageModal">发私信
+                        </button>
+                    </li>
+                </ul>
+
+                <!--发送消息页面-->
+                <div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">发私信</h4>
+                            </div>
+                            <form role="form" action="/msg/addMessage" id="messageform" method="post">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">发给:</label>
+                                        <input type="text" class="form-control" name="toName" id="recipient-name"
+                                               placeholder="请输入对方姓名">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label"> 内容:</label>
+                                        <textarea class="form-control" name="content" id="message-text"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn btn-primary">发送</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+
+                    <!--系统通知内容-->
+                    <div class="tab-pane" id="systemMessage">
+                        <br>
+                        <br>
+                        <div class="col-md-12 column">
+                            <div class="media">
+                                <a href="#" class="pull-left"><img src="v3/default7.jpg" class="media-object"
+                                                                   alt=''/></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Nested media heading
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                                    sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
+                                    turpis.
+                                    <div class="media">
+                                        <a href="#" class="pull-left"><img src="v3/default8.jpg" class="media-object"
+                                                                           alt=''/></a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                Nested media heading
+                                            </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                                            scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in
+                                            vulputate at, tempus viverra turpis.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--朋友私信内容-->
+                    <div class="tab-pane active" id="userMessage">
+                        <br>
+                        <br>
+                        <div class="col-md-12 column">
+                            <div class="list-group">
+                                <div th:each="conversation:${conversations}">
+                                    <a href="messageDetail.html" th:href="@{/msg/detail/(conversationId=${conversation.get('conversation').conversationId})}" class="list-group-item ">
+                                        <img src="" th:attr="src=@{${conversation.get('user').headUrl}}" class="media-object" alt=''/>
+                                        <h4 class="list-group-item-heading" th:text=" ${conversation.get('user').name}"></h4>
+                                        <p class="list-group-item-text" th:text=" ${conversation.get('conversation').content}"></p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

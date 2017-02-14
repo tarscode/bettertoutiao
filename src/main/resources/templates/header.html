@@ -4,11 +4,13 @@
 <!--头部文件-->
 <head th:fragment="head">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>校园头条-更懂你的头条</title>
+    <link rel="shortcut icon" href="../static/res/logo.png"/>
     <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap-theme.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/login.css" rel="stylesheet">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.0.1/js/bootstrap.js"></script>
     <link href="../static/css/mricode.pagination.css" rel="stylesheet"/>
@@ -31,6 +33,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/home">校园头条</a>
+                <!--
+                <a class="navbar-brand" href="/home">
+                    <img class="media-object" src="../static/res/logo-main.png" alt="...">
+                </a>
+                -->
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,20 +45,20 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/home">首页<span class="sr-only">(current)</span></a></li>
                     <li><a href="#">订阅</a></li>
+                    <li><a href="#">发布</a></li>
+                    <li><a href="#">广场</a></li>
                 </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="请输入关键词...">
-                    </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
-                </form>
+
 
                 <!--个人中心-->
                 <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/msg/list">消息</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">个人中心<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li th:if="${user} != null"><a href="#"  th:text=" ${user.name}" ></a></li>
                             <li><a href="#">设置</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">注销</a></li>
@@ -59,17 +66,27 @@
                     </li>
                 </ul>
 
+
                 <!--导航栏登陆页面-->
-                <form class="navbar-form navbar-right" action="/login/" id="loginform" method="post">
+                <div th:if="${user} == null">
+                    <form class="navbar-form navbar-right" action="/login/" id="loginform" method="post">
+                        <div class="form-group">
+                            <input name="username" id="username" type="text" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input name="password" id="password" type="password" placeholder="Password"
+                                   class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">登陆</button>
+                        <button type="submit" class="btn btn-danger">注册</button>
+                    </form>
+                </div>
+
+                <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input name="username" id="username" type="text" placeholder="Email" class="form-control">
+                        <input type="text" class="form-control" placeholder="请输入关键词...">
                     </div>
-                    <div class="form-group">
-                        <input name="password" id="password" type="password" placeholder="Password"
-                               class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">登陆</button>
-                    <button type="submit" class="btn btn-danger">注册</button>
+                    <button type="submit" class="btn btn-default">搜索</button>
                 </form>
 
             </div><!-- /.navbar-collapse -->

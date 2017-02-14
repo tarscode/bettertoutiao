@@ -32,6 +32,11 @@ public class IndexController {
         return "login";
     }
 
+    @RequestMapping(path = {"/message"})
+    public String message() {
+        return "message";
+    }
+
     @RequestMapping(path = {"/detail"})
     public String detail(Model model, @RequestParam(value = "id", defaultValue = "1", required = false) int id) {
         News news = newsService.getNews(id);
