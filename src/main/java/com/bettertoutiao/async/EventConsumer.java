@@ -11,18 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
-import sun.java2d.pipe.hw.AccelDeviceEventNotifier;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
 
 /**
  * Created by nowcoder on 2016/7/30.
  */
+/*
 @Service
 public class EventConsumer implements InitializingBean, ApplicationContextAware {
     private static final Logger logger = LoggerFactory.getLogger(EventConsumer.class);
@@ -81,3 +79,4 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
         this.applicationContext = applicationContext;
     }
 }
+*/

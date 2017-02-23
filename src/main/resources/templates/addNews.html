@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<div th:replace="header :: head"></div>
+<body>
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div th:replace="header :: menu2"></div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <form role="form" action="/news/addNews" method="post">
+                        <div class="form-group">
+                            <label for="title">标题</label>
+                            <input type="text" class="form-control" name="title" id="title"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="url">链接</label>
+                            <input type="text" class="form-control" name="url" id="url"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">内容</label>
+                            <textarea id="content" name="content" class="form-control" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">发布</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -11,22 +11,18 @@
     </div>
 
     <div class="row clearfix">
-        <div th:replace="header :: sidebar"></div>
-        <div class="col-md-8 column">
+        <div class="col-md-12 column">
 
-            <!--新闻列表-->
-            <div th:if="${not #lists.isEmpty(news)}">
-                <div th:each="news:${news}">
+            <!--订阅列表-->
+            <div th:if="${not #lists.isEmpty(departs)}">
+                <div th:each="depart:${departs}">
                     <div class="media">
-                        <a href="#" class="pull-left"><img src="http://olcd75zw3.bkt.clouddn.com/heu_logo_small.jpg"
-                                                           class="media-object" alt=''/></a>
+                        <a href="" class="pull-left" th:href="@{/departNews(departId=${depart.id})}" ><img src="http://olcd75zw3.bkt.clouddn.com/heu_logo_small.jpg" class="media-object" alt=''/></a>
                         <a href="#" class="pull-right"><span class="glyphicon glyphicon-thumbs-up">25赞</span></a>
                         <a href="#" class="pull-right"><span class="glyphicon glyphicon-heart">已收藏</span></a>
                         <div class="media-body">
-                            <a href="detail.html" th:href="@{/news/{nid}(nid=${news.id})}"
-                               th:text=" ${news.title}" style="text-decoration:none;color:#000000;font-size:25px;"></a>
-                            <p class="text-right lead" th:text=" ${news.depart}"></p>
-                            <p class="text-right lead" th:text="${#calendars.format(news.newsdate,'yyyy-MM-dd hh:mm:ss')}"></p>
+                            <h4 class="media-heading" th:text=" ${depart.name}"></h4>
+                            <p class="text-left lead" th:text=" ${depart.content}"></p>
                         </div>
                     </div>
                     <hr>

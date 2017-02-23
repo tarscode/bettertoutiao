@@ -18,7 +18,7 @@
                     </h4>
                 </div>
                 <div class="col-md-4 column">
-                    <h4 class="text-info text-center" th:text=" ${news.newsdate}">
+                    <h4 class="text-info text-center" th:text="${#calendars.format(news.newsdate,'yyyy-MM-dd hh:mm:ss')}">
                     </h4>
                 </div>
             </div>

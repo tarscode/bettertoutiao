@@ -28,6 +28,7 @@ import java.util.List;
  */
 @Controller
 public class MessageController {
+
     private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
 
     @Autowired

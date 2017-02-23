@@ -1,5 +1,9 @@
 package com.bettertoutiao.async.handler;
 
+import com.bettertoutiao.async.EventHandler;
+import com.bettertoutiao.async.EventModel;
+import com.bettertoutiao.async.EventType;
+import com.bettertoutiao.util.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +15,9 @@ import java.util.Map;
 /**
  * Created by nowcoder on 2016/7/30.
  */
-/*
 @Component
 public class LoginExceptionHandler implements EventHandler {
+
     @Autowired
     MailSender mailSender;
 
@@ -30,4 +34,3 @@ public class LoginExceptionHandler implements EventHandler {
         return Arrays.asList(EventType.LOGIN);
     }
 }
-*/

@@ -42,4 +42,8 @@ public class NewsService {
         list = newsDAO.selectByDepart(depart, page, size);
         return list;
     }
+
+    public int addNews(News news){
+        return newsDAO.addNews(news);
+    }
 }

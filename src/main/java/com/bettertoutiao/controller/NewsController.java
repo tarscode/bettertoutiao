@@ -1,21 +1,23 @@
 package com.bettertoutiao.controller;
 
 
-import com.bettertoutiao.model.Comment;
-import com.bettertoutiao.model.EntityType;
-import com.bettertoutiao.model.HostHolder;
-import com.bettertoutiao.model.News;
+import com.bettertoutiao.model.*;
 import com.bettertoutiao.service.CommentService;
 import com.bettertoutiao.service.DepartService;
 import com.bettertoutiao.service.NewsService;
 import com.bettertoutiao.service.UserService;
+import com.bettertoutiao.util.CommonUtil;
+import com.bettertoutiao.util.JsonUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import com.bettertoutiao.model.ViewObject;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.image.TileObserver;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,6 +25,8 @@ import java.util.List;
  */
 @Controller
 public class NewsController {
+
+    private static final Logger logger = LoggerFactory.getLogger(NewsController.class);
 
     @Autowired
     NewsService newsService;
@@ -53,5 +57,36 @@ public class NewsController {
         }
         model.addAttribute("comments", vos);
         return "detail";
+    }
+
+    @RequestMapping(path = {"/release"})
+    public String release() {
+        return "addNews";
+    }
+
+    @RequestMapping(path = {"/news/addNews"}, method = {RequestMethod.POST})
+    public String addNews(@RequestParam(value = "title", defaultValue = "无标题", required = false) String title,
+                          @RequestParam(value = "url", defaultValue = "/home", required = false) String url,
+                          @RequestParam(value = "content" , defaultValue = "无内容", required = false) String content) {
+        try {
+            if (hostHolder.getUser() == null) {
+                return JsonUtil.getJsonString(999, "未登录");
+            }
+
+            User user = hostHolder.getUser();
+            News news = new News();
+            news.setTitle(title);
+            news.setUrl(url);
+            news.setContent(content);
+            news.setType(CommonUtil.TYPE_USER);
+            news.setDepart(user.getId());
+            news.setCreatetime(new Date());
+            news.setNewsdate(new Date());
+            newsService.addNews(news);
+            return "redirect:/home";
+        } catch (Exception e) {
+            logger.error("增加站内信失败" + e.getMessage());
+            return "redirect:/addNews";
+        }
     }
 }

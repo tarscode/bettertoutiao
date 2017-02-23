@@ -16,6 +16,7 @@ public class CommonUtil {
 
     public static int ANONYMOUS_USERID = 9;
     public static int SYSTEM_USERID = 8;
+    public static int TYPE_USER= 2;
 
 
     public static String dateFormat(Date date) throws ParseException {

@@ -60,8 +60,8 @@ public class IndexController {
         return json;
     }
 
-    @RequestMapping(path = {"/home","/depart"})
-    public String home(Model model, @RequestParam(value = "id", defaultValue = "1", required = false) int departId,
+    @RequestMapping(path = {"/home","/departNews"})
+    public String home(Model model, @RequestParam(value = "departId", defaultValue = "1", required = false) int departId,
                          @RequestParam(value = "page", defaultValue = "1", required = false) int page,
                          @RequestParam(value = "size", defaultValue = "10", required = false) int size) {
         int pre = page > 1 ? page - 1 : 1;
