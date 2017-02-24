@@ -27,29 +27,29 @@ public class IndexController {
     @Autowired
     DepartService departService;
 
-    @RequestMapping(path = {"/", "/index"})
+    @RequestMapping(path = {"/bettertoutiao", "/bettertoutiao/index"})
     public String index() {
         return "login";
     }
 
-    @RequestMapping(path = {"/message"})
+    @RequestMapping(path = {"/bettertoutiao/message"})
     public String message() {
         return "message";
     }
 
-    @RequestMapping(path = {"/detail"})
+    @RequestMapping(path = {"/bettertoutiao/detail"})
     public String detail(Model model, @RequestParam(value = "id", defaultValue = "1", required = false) int id) {
         News news = newsService.getNews(id);
         model.addAttribute("news", news);
         return "detail";
     }
 
-    @RequestMapping(path = {"/example/{id}"})
+    @RequestMapping(path = {"/bettertoutiao/example/{id}"})
     public String example(@PathVariable("id") int id) {
         return "example" + id;
     }
 
-    @RequestMapping(path = {"/camel"}, method = {RequestMethod.GET}, produces = "application/json;charset=UTF-8")
+    @RequestMapping(path = {"/bettertoutiao/camel"}, method = {RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String camel(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
                         @RequestParam(value = "size", defaultValue = "10", required = false) int size) {
@@ -60,7 +60,7 @@ public class IndexController {
         return json;
     }
 
-    @RequestMapping(path = {"/home","/departNews"})
+    @RequestMapping(path = {"/bettertoutiao/home","/bettertoutiao/departNews"})
     public String home(Model model, @RequestParam(value = "departId", defaultValue = "1", required = false) int departId,
                          @RequestParam(value = "page", defaultValue = "1", required = false) int page,
                          @RequestParam(value = "size", defaultValue = "10", required = false) int size) {

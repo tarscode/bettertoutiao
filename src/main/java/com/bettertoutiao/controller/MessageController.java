@@ -40,7 +40,7 @@ public class MessageController {
     @Autowired
     HostHolder hostHolder;
 
-    @RequestMapping(path = {"/msg/list"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/bettertoutiao/msg/list"}, method = {RequestMethod.GET})
     public String conversationDetail(Model model) {
         try {
             int localUserId = hostHolder.getUser().getId();
@@ -63,7 +63,7 @@ public class MessageController {
         return "message";
     }
 
-    @RequestMapping(path = {"/msg/detail"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/bettertoutiao/msg/detail"}, method = {RequestMethod.GET})
     public String conversationDetail(Model model, @Param("conversationId") String conversationId) {
         try {
             List<Message> conversationList = messageService.getConversationDetail(conversationId, 0, 10);
@@ -88,7 +88,7 @@ public class MessageController {
     }
 
 
-    @RequestMapping(path = {"/msg/addMessage"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/bettertoutiao/msg/addMessage"}, method = {RequestMethod.POST})
     public String addMessage(@RequestParam("toName") String toName,
                              @RequestParam("content") String content) {
         try {
@@ -107,15 +107,15 @@ public class MessageController {
             msg.setCreatedDate(new Date());
             //msg.setConversationId(fromId < toId ? String.format("%d_%d", fromId, toId) : String.format("%d_%d", toId, fromId));
             messageService.addMessage(msg);
-            return "redirect:/msg/list";
+            return "redirect:/bettertoutiao/msg/list";
         } catch (Exception e) {
             logger.error("增加站内信失败" + e.getMessage());
-            return "redirect:/msg/list";
+            return "redirect:/bettertoutiao/msg/list";
         }
     }
 
 
-    @RequestMapping(path = {"/msg/jsonAddMessage"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/bettertoutiao/msg/jsonAddMessage"}, method = {RequestMethod.POST})
     @ResponseBody
     public String addMessage(@RequestParam("fromId") int fromId,
                              @RequestParam("toId") int toId,
