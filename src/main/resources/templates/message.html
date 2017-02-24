@@ -31,7 +31,7 @@
                                         aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="exampleModalLabel">发私信</h4>
                             </div>
-                            <form role="form" action="/bettertoutiao/msg/addMessage" id="messageform" method="post">
+                            <form role="form" action="" th:attr="action=@{/msg/addMessage}"  id="messageform" method="post">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">发给:</label>
@@ -91,7 +91,7 @@
                         <div class="col-md-12 column">
                             <div class="list-group">
                                 <div th:each="conversation:${conversations}">
-                                    <a href="messageDetail.html" th:href="@{/bettertoutiao/msg/detail/(conversationId=${conversation.get('conversation').conversationId})}" class="list-group-item ">
+                                    <a href="messageDetail.html" th:href="@{/msg/detail/(conversationId=${conversation.get('conversation').conversationId})}" class="list-group-item ">
                                         <img src="" th:attr="src=@{${conversation.get('user').headUrl}}" class="media-object" alt=''/>
                                         <h4 class="list-group-item-heading" th:text=" ${conversation.get('user').name}"></h4>
                                         <p class="list-group-item-text" th:text=" ${conversation.get('conversation').content}"></p>

@@ -37,7 +37,7 @@ public class CommentController {
     @Autowired
     SensitiveService sensitiveService;
 
-    @RequestMapping(path = {"/bettertoutiao/addComment"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/addComment"}, method = {RequestMethod.POST})
     public String addComment(@RequestParam("newsId") int newsId,
                              @RequestParam("content") String content) {
         try {
@@ -63,6 +63,6 @@ public class CommentController {
         } catch (Exception e) {
             logger.error("增加评论失败" + e.getMessage());
         }
-        return "redirect:/bettertoutiao//news/" + String.valueOf(newsId);
+        return "redirect:/news/" + String.valueOf(newsId);
     }
 }

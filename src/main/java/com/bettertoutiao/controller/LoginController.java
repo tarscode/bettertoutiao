@@ -26,7 +26,7 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(path = {"/bettertoutiao/reg/"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String register(Model model,
                            @RequestParam("username") String username,
                            @RequestParam("password") String password) {
@@ -37,14 +37,14 @@ public class LoginController {
                 model.addAttribute("msg", map.get("msg"));
                 return "login";
             }
-            return "redirect:/bettertoutiao";
+            return "redirect:/";
         } catch (Exception e) {
             logger.error("注册异常" + e.getMessage());
             return "login";
         }
     }
 
-    @RequestMapping(path = {"/bettertoutiao/login/"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/login/"}, method = {RequestMethod.POST})
     public String login(Model model,
                         @RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -62,9 +62,9 @@ public class LoginController {
                 }
                 response.addCookie(cookie);
                 if (StringUtils.isNotBlank(next)) {
-                    return "redirect:/bettertoutiao" + next;
+                    return "redirect:/" + next;
                 }
-                return "redirect:/bettertoutiao/home";
+                return "redirect:/home";
             } else {
                 model.addAttribute("msg", map.get("msg"));
                 return "login";
@@ -76,7 +76,7 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(path = {"/bettertoutiao/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(path = {"/logout"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String logout(@CookieValue("ticket") String ticket) {
         userService.logout(ticket);
         return "redirect:/";

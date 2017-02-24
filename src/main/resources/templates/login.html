@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-4 column">
 
-            <form role="form" action="/bettertoutiao/login/" id="loginform" method="post">
+            <form role="form" action="" th:attr="action=@{/login/}" id="loginform" method="post">
                 <fieldset>
                     <h2>用户登陆</h2>
                     <hr class="colorgraph">
@@ -61,15 +61,24 @@
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" value="登陆" class="btn btn-lg btn-success btn-block"/>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" value="注册" class="btn btn-lg btn-primary  btn-block"/>
+                        </div>
+                        <!--
+                        <div class="col-xs-6 col-sm-6 col-md-6">
                             <button class="btn btn-lg btn-success btn-block" type="submit"
-                                    onclick="form=document.getElementById('loginform');form.action='/bettertoutiao/login/'">登陆
+                                    onclick="form=document.getElementById('loginform');form.action='/login/'">登陆
                             </button>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <button class="btn btn-lg btn-primary btn-block" type="submit"
-                                    onclick="form=document.getElementById('loginform');form.action='/bettertoutiao/reg/'">注册
+                                    onclick="form=document.getElementById('loginform');form.action='/reg/'">注册
                             </button>
                         </div>
+                        -->
+
                     </div>
                 </fieldset>
             </form>

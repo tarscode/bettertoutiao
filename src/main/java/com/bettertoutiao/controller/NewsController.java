@@ -43,7 +43,7 @@ public class NewsController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(path = {"/bettertoutiao/news/{nid}"})
+    @RequestMapping(path = {"/news/{nid}"})
     public String newsDetail(Model model, @PathVariable("nid") int nid) {
         News news = newsService.getNews(nid);
         model.addAttribute("news", news);
@@ -59,12 +59,12 @@ public class NewsController {
         return "detail";
     }
 
-    @RequestMapping(path = {"/bettertoutiao/release"})
+    @RequestMapping(path = {"/release"})
     public String release() {
         return "addNews";
     }
 
-    @RequestMapping(path = {"/bettertoutiao/news/addNews"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/news/addNews"}, method = {RequestMethod.POST})
     public String addNews(@RequestParam(value = "title", defaultValue = "无标题", required = false) String title,
                           @RequestParam(value = "url", defaultValue = "/home", required = false) String url,
                           @RequestParam(value = "content" , defaultValue = "无内容", required = false) String content) {
@@ -83,10 +83,10 @@ public class NewsController {
             news.setCreatetime(new Date());
             news.setNewsdate(new Date());
             newsService.addNews(news);
-            return "redirect:/bettertoutiao/home";
+            return "redirect:/home";
         } catch (Exception e) {
             logger.error("增加站内信失败" + e.getMessage());
-            return "redirect:/bettertoutiao/addNews";
+            return "redirect:/addNews";
         }
     }
 }

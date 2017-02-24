@@ -23,7 +23,7 @@
                         <a href="#" class="pull-right"><span class="glyphicon glyphicon-thumbs-up">25赞</span></a>
                         <a href="#" class="pull-right"><span class="glyphicon glyphicon-heart">已收藏</span></a>
                         <div class="media-body">
-                            <a href="detail.html" th:href="@{/bettertoutiao/news/{nid}(nid=${news.id})}"
+                            <a href="detail.html" th:href="@{/news/{nid}(nid=${news.id})}"
                                th:text=" ${news.title}" style="text-decoration:none;color:#000000;font-size:25px;"></a>
                             <p class="text-right lead" th:text=" ${news.depart}"></p>
                             <p class="text-right lead" th:text="${#calendars.format(news.newsdate,'yyyy-MM-dd hh:mm:ss')}"></p>
@@ -36,13 +36,13 @@
             <!--分页-->
             <ul class="pagination">
                 <li>
-                    <a href="home.html" th:href="@{/bettertoutiao/depart(id=${departId},page=${pre})}">上一页</a>
+                    <a href="home.html" th:href="@{/depart(id=${departId},page=${pre})}">上一页</a>
                 </li>
                 <li>
                     <span th:text="${cur}"></span>
                 </li>
                 <li>
-                    <a href="home.html" th:href="@{/bettertoutiao/depart(id=${departId},page=${next})}">下一页</a>
+                    <a href="home.html" th:href="@{/depart(id=${departId},page=${next})}">下一页</a>
                 </li>
             </ul>
         </div>

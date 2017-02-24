@@ -23,7 +23,7 @@ public class DepartController {
     @Autowired
     DepartService departService;
 
-    @RequestMapping(path = {"/bettertoutiao/depart"})
+    @RequestMapping(path = {"/depart"})
     public String depart(Model model,@RequestParam(value = "page", defaultValue = "1", required = false) int page,
                          @RequestParam(value = "size", defaultValue = "10", required = false) int size) {
         int pre = page > 1 ? page - 1 : 1;

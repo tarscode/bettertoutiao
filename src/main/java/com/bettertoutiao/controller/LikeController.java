@@ -31,7 +31,7 @@ public class LikeController {
     @Autowired
     EventProducer eventProducer;
 
-    @RequestMapping(path = {"/bettertoutiao/like"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/like"}, method = {RequestMethod.POST})
     @ResponseBody
     public String like(@RequestParam("commentId") int commentId) {
         if (hostHolder.getUser() == null) {
@@ -49,7 +49,7 @@ public class LikeController {
         return JsonUtil.getJsonString(0, String.valueOf(likeCount));
     }
 
-    @RequestMapping(path = {"/bettertoutiao/dislike"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/dislike"}, method = {RequestMethod.POST})
     @ResponseBody
     public String dislike(@RequestParam("commentId") int commentId) {
         if (hostHolder.getUser() == null) {
