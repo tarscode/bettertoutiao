@@ -16,16 +16,16 @@ import java.util.List;
 public interface NewsDAO {
     String TABLE_NAME = "news";
     String INSERT_FIELDS = "title, type, depart, newsdate, content, createtime, url";
-    String SELECT_FIELDS = "id, title, type, depart, channel, newsdate, content, url";
+    String SELECT_FIELDS = "id, title, type, depart, channel, newsdate, content, url, createtime";
 
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
             ") values (#{title},#{type},#{depart},#{newsdate},#{content},#{createtime},#{url})"})
     int addNews(News news);
 
-    @Select({"select", SELECT_FIELDS, " from ", TABLE_NAME, " order by newsdate desc limit #{0},#{1}"})
+    @Select({"select", SELECT_FIELDS, " from ", TABLE_NAME, " order by createtime desc limit #{0},#{1}"})
     List<News> selectByPage(int page, int size);
 
-    @Select({"select", SELECT_FIELDS, " from ", TABLE_NAME, " where depart = #{0} order by newsdate desc limit #{1},#{2}"})
+    @Select({"select", SELECT_FIELDS, " from ", TABLE_NAME, " where depart = #{0} order by createtime desc limit #{1},#{2}"})
     List<News> selectByDepart(int depart, int page, int size);
 
     @Select({"select", SELECT_FIELDS, " from ", TABLE_NAME, " where id = #{id}"})
